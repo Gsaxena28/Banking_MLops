@@ -1,0 +1,15 @@
+stages:
+  validate:
+    cmd: python -m src.data_validation
+    deps:
+      - data/raw/bank-additional.csv
+      - src/data_validation.py
+      - src/config.py
+  train:
+    cmd: python -m src.train
+    deps:
+      - data/raw/bank-additional.csv
+      - src/train.py
+      - src/config.py
+    outs:
+      - models/logistic_regression_model.pkl
